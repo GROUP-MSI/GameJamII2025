@@ -1,4 +1,4 @@
-# Minas de Oruro: El Despertar
+# El Anchanchu
 
 ## 📖 Descripción
 
@@ -58,7 +58,7 @@ Despiertas en la oscuridad absoluta, desorientado y sin recordar cómo llegaste 
 ## 🌍 Contexto Cultural
 
 El juego está inspirado en las leyendas del **Tío de la mina**, una deidad del inframundo venerada por los mineros bolivianos en Oruro y Potosí. Esta figura mitológica representa al señor del mundo subterráneo, a quien los mineros ofrecen rituales y ofrendas para protegerse y obtener buena fortuna en su trabajo peligroso.
-
+s
 ## 🛠️ Tecnologías Utilizadas
 
 - **Motor**: Unity 2022.3 LTS
@@ -85,11 +85,10 @@ El juego está inspirado en las leyendas del **Tío de la mina**, una deidad del
 ## 👥 Créditos
 
 - **Desarrollo**: SuyuStudio
-- **Diseño de niveles**: Esteban
-- **Arte y modelado**: Wilmer
-- **Programación**: Deynar
-- **Diseño de sonido**: Luis
-- **Historia y narrativa**: SuyuStudio
+- **Diseño de niveles**: Esteban Jesus Ramos Chambilla
+- **Arte y modelado**: Wilmer Cruz Aruquipa
+- **Programación**: Deynar Luis Calle Lazo
+- **Diseño de sonido**: Luis Diego Blanco Huanca
 
 
 ## 🐛 Reporte de Bugs

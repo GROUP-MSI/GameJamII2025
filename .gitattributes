@@ -1,0 +1,12 @@
+
+Assets/Models/** filter=lfs diff=lfs merge=lfs -text
+:(exclude)Assets/Models/**.meta filter=lfs diff=lfs merge=lfs -text
+
+Assets/Sprites/** filter=lfs diff=lfs merge=lfs -text
+:(exclude)Assets/Sprites/**.meta filter=lfs diff=lfs merge=lfs -text
+
+Assets/Textures/** filter=lfs diff=lfs merge=lfs -text
+:(exclude)Assets/Textures/**.meta filter=lfs diff=lfs merge=lfs -text
+
+Assets/Sounds/** filter=lfs diff=lfs merge=lfs -text
+:(exclude)Assets/Sounds/**.meta filter=lfs diff=lfs merge=lfs -text

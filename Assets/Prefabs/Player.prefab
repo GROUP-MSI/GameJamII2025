@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4459864850019384737}
   - component: {fileID: 4459864850019384741}
   - component: {fileID: 5740682668154910927}
+  - component: {fileID: 4628920881057577779}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -159,6 +160,23 @@ MonoBehaviour:
   invertCamera: 0
   jumpKey: 32
   jumpPower: 5
+--- !u!114 &4628920881057577779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4459864850019384750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 842d41eef90e74188854db26fc75b583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 4767529584814096740}
+  fillImage: {fileID: 0}
+  fullHealthColor: {r: 0, g: 1, b: 0, a: 1}
+  zeroHealthColor: {r: 1, g: 0, b: 0, a: 1}
+  maxHealth: 100
 --- !u!1 &4459864851310106424
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,6 +417,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67e2af1e88f593db8a973b63669674a4, type: 3}
+--- !u!114 &4767529584814096740 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6133920036322229213, guid: 67e2af1e88f593db8a973b63669674a4, type: 3}
+  m_PrefabInstance: {fileID: 1660039511475862201}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5212735633367341931 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6872209714994749906, guid: 67e2af1e88f593db8a973b63669674a4, type: 3}

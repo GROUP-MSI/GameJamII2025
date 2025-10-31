@@ -26,6 +26,7 @@ public class PlayerGame : MonoBehaviour
 
     private void Start()
     {
+        slider.value = 1;
         currentHealth = maxHealth;
         SetMaxHealth(maxHealth);
     }
@@ -75,5 +76,10 @@ public class PlayerGame : MonoBehaviour
 
         if (fillImage != null)
             fillImage.color = Color.Lerp(zeroHealthColor, fullHealthColor, health / slider.maxValue);
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+
     }
 }

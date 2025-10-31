@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using TMPro;
 
 public class PlayerGame : MonoBehaviour
 {
@@ -29,6 +29,9 @@ public class PlayerGame : MonoBehaviour
 	public GameObject btnAction;
 	public GameObject btnActionFinal;
 	public GameObject btnActionKey;
+
+	public AudioSource home1;
+	public AudioSource home2;
 
 	private bool hasKey;
 
@@ -96,6 +99,29 @@ public class PlayerGame : MonoBehaviour
 			btnActionKey.SetActive(true);
 
 		btnAction.SetActive(true);
+
+		if (other.gameObject.tag == "casa1" && Input.GetKeyDown(KeyCode.E))
+		{
+			home1.Play();
+		}
+
+		if (other.gameObject.tag == "casa2" && Input.GetKeyDown(KeyCode.E))
+		{
+			home2.Play();
+		}
+
+
+		if (other.gameObject.tag == "key" && Input.GetKeyDown(KeyCode.R))
+		{
+			
+		}
+
+		if (other.gameObject.tag == "car" && Input.GetKeyDown(KeyCode.L))
+		{
+
+		}
+		
+
 	}
 
 

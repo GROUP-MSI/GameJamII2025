@@ -7,6 +7,7 @@ public class PlayerCamera : MonoBehaviour
     [Header("Camera Settings")]
     public float sensX = 100f;
     public float sensY = 100f;
+    public Transform cameraPosition;
 
     [Header("References")]
     public Transform playerBody;
@@ -23,6 +24,7 @@ public class PlayerCamera : MonoBehaviour
 
     void Update()
     {
+        transform.position = cameraPosition.position;
         // Obtener input del mouse
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;

@@ -7,6 +7,8 @@ TagManager:
   - Car
   - casa1
   - casa2
+  - monster
+  - key
   layers:
   - Default
   - TransparentFX

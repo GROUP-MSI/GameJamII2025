@@ -1,134 +1,155 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
-using TMPro;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PlayerGame : MonoBehaviour
 {
-	[Header("UI Slider")]
-	public Slider slider;
-	public Image fillImage;
+    [Header("UI Slider")]
+    public Slider slider;
+    public Image fillImage;
 
-	[Header("Colores")]
-	public Color fullHealthColor = Color.green;
-	public Color zeroHealthColor = Color.red;
+    [Header("Colores de salud")]
+    public Color fullHealthColor = Color.green;
+    public Color zeroHealthColor = Color.red;
 
-	[Header("Salud del jugador")]
-	public float maxHealth = 100f;
-	private float currentHealth;
+    [Header("Salud del jugador")]
+    public float maxHealth = 100f;
+    private float currentHealth;
 
-	[Header("Daños por tag")]
-	public Dictionary<string, float> damageByTag = new Dictionary<string, float>()
-	{
-			{ "Enemy", 10f },
-			{ "Trap", 20f },
-			{ "Bullet", 15f }
-	};
+    [Header("Daño continuo del monstruo")]
+    public float monsterDamagePerSecond = 5f; // daño gradual por segundo
 
-	[Header("Objetos Active")]
-	public GameObject btnAction;
-	public GameObject btnActionFinal;
-	public GameObject btnActionKey;
+    [Header("Objetos Active")]
+    public GameObject btnAction;
+    public GameObject btnActionFinal;
+    public GameObject btnActionKey;
 
-	public AudioSource home1;
-	public AudioSource home2;
+    public AudioSource home1;
+    public AudioSource home2;
 
 	private bool hasKey;
 
-	private void Start()
-	{
-		slider.value = 1;
-		hasKey = false;
-		currentHealth = maxHealth;
-		SetMaxHealth(maxHealth);
-	}
+	public GameObject panelSucess;
+	public GameObject linterna;
+	public AudioSource car;
 
-	private void OnCollisionEnter(Collision collision)
+    private void Start()
 	{
-		if (damageByTag.TryGetValue(collision.gameObject.tag, out float damage))
-		{
-			TakeDamage(damage);
-		}
-	}
+		linterna.SetActive(false);
+		panelSucess.SetActive(false);
+		btnAction.SetActive(false);
+		btnActionKey.SetActive(false);
+		btnActionFinal.SetActive(false);
+        hasKey = false;
+        currentHealth = maxHealth;
+        SetMaxHealth(maxHealth);
+    }
 
-	private void TakeDamage(float amount)
-	{
-		currentHealth -= amount;
+    private void Update()
+    {
+		// Evita que la salud sea negativa
 		currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-		SetHealth(currentHealth);
-
-		if (currentHealth <= 0)
+		
+		if (Input.GetMouseButton(1)) // botón derecho del mouse
 		{
-			Die();
+			linterna.SetActive(true);
 		}
-	}
+		else
+		{
+			linterna.SetActive(false);
+		}
+    }
 
-	private void Die()
+	private void OnTriggerStay(Collider other)
 	{
-		Debug.Log("Jugador ha muerto.");
-	}
+		if (other.CompareTag("monster"))
+		{
+			TakeDamage(monsterDamagePerSecond * Time.deltaTime);
+		}
 
-
-	public void SetMaxHealth(float health)
-	{
-		if (slider == null) return;
-
-		slider.maxValue = health;
-		slider.value = health;
-
-		if (fillImage != null)
-			fillImage.color = fullHealthColor;
-	}
-
-	public void SetHealth(float health)
-	{
-		if (slider == null) return;
-
-		slider.value = health;
-
-		if (fillImage != null)
-			fillImage.color = Color.Lerp(zeroHealthColor, fullHealthColor, health / slider.maxValue);
-	}
-
-	void OnTriggerStay(Collider other)
-	{
-		if (other.gameObject.tag == "car" && hasKey)
+		if (other.CompareTag("Car") && hasKey)
 			btnActionFinal.SetActive(true);
 
-		if (other.gameObject.tag == "key" && !hasKey)
+		if (other.CompareTag("key") && !hasKey)
+		{
 			btnActionKey.SetActive(true);
 
-		btnAction.SetActive(true);
+			if (Input.GetKeyDown(KeyCode.R))
+			{
+				hasKey = true;
+				Destroy(other.gameObject);
+				btnActionKey.SetActive(false);
+			}
+		}
 
-		if (other.gameObject.tag == "casa1" && Input.GetKeyDown(KeyCode.E))
-		{
+		if (other.CompareTag("casa1") || other.CompareTag("Car") || other.CompareTag("casa2"))
+			btnAction.SetActive(true);
+
+		// 🏠 Interacción con casas
+		if (other.CompareTag("casa1") && Input.GetKeyDown(KeyCode.E))
 			home1.Play();
-		}
 
-		if (other.gameObject.tag == "casa2" && Input.GetKeyDown(KeyCode.E))
-		{
+		if (other.CompareTag("casa2") && Input.GetKeyDown(KeyCode.E))
 			home2.Play();
-		}
 
 
-		if (other.gameObject.tag == "key" && Input.GetKeyDown(KeyCode.R))
+		if (other.CompareTag("Car") && Input.GetKeyDown(KeyCode.L) && hasKey)
 		{
-			
+			panelSucess.SetActive(true);
+			car.Play();
+			StartCoroutine(ChangeSceneAfterDelay("Menu", 3f));
 		}
-
-		if (other.gameObject.tag == "car" && Input.GetKeyDown(KeyCode.L))
-		{
-
-		}
-		
-
+	}
+	
+	private IEnumerator ChangeSceneAfterDelay(string sceneName, float delay)
+	{
+		yield return new WaitForSeconds(delay);
+		SceneManager.LoadScene(sceneName);
 	}
 
+    private void OnTriggerExit(Collider other)
+    {
+        // 🔄 Ocultar botones al salir del área
+        btnAction.SetActive(false);
+        btnActionKey.SetActive(false);
+        btnActionFinal.SetActive(false);
+    }
 
-  void OnTriggerExit(Collider other)
-  {
-    btnAction.SetActive(false);
-    btnActionKey.SetActive(false);
-    btnActionFinal.SetActive(false);
-  }
+    private void TakeDamage(float amount)
+    {
+        currentHealth -= amount;
+        SetHealth(currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log("💀 El jugador ha muerto.");
+    }
+
+    public void SetMaxHealth(float health)
+    {
+        if (slider == null) return;
+
+        slider.maxValue = health;
+        slider.value = health;
+
+        if (fillImage != null)
+            fillImage.color = fullHealthColor;
+    }
+
+    public void SetHealth(float health)
+    {
+        if (slider == null) return;
+
+        slider.value = health;
+
+        if (fillImage != null)
+            fillImage.color = Color.Lerp(zeroHealthColor, fullHealthColor, health / slider.maxValue);
+    }
 }

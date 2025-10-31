@@ -177,6 +177,9 @@ MonoBehaviour:
   fullHealthColor: {r: 0, g: 1, b: 0, a: 1}
   zeroHealthColor: {r: 1, g: 0, b: 0, a: 1}
   maxHealth: 100
+  btnAction: {fileID: 8749593257720056080}
+  btnActionFinal: {fileID: 688639892814753773}
+  btnActionKey: {fileID: 927620466844751548}
 --- !u!1 &4459864851310106424
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +420,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67e2af1e88f593db8a973b63669674a4, type: 3}
+--- !u!1 &688639892814753773 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2199779129258366292, guid: 67e2af1e88f593db8a973b63669674a4, type: 3}
+  m_PrefabInstance: {fileID: 1660039511475862201}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &927620466844751548 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2005848707673123845, guid: 67e2af1e88f593db8a973b63669674a4, type: 3}
+  m_PrefabInstance: {fileID: 1660039511475862201}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4767529584814096740 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6133920036322229213, guid: 67e2af1e88f593db8a973b63669674a4, type: 3}
@@ -431,6 +444,11 @@ MonoBehaviour:
 --- !u!4 &5212735633367341931 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6872209714994749906, guid: 67e2af1e88f593db8a973b63669674a4, type: 3}
+  m_PrefabInstance: {fileID: 1660039511475862201}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8749593257720056080 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7954880410141275049, guid: 67e2af1e88f593db8a973b63669674a4, type: 3}
   m_PrefabInstance: {fileID: 1660039511475862201}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8676195838781732525

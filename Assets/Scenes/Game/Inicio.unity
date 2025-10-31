@@ -243,6 +243,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: casa
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a97812883a60a848b5b9774803d2ff9, type: 3}
+      propertyPath: m_TagString
+      value: casa1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2053,6 +2057,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a9335024544bf7447af98aaf4aae1dfd, type: 3}
       propertyPath: m_Name
       value: otracasita
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a9335024544bf7447af98aaf4aae1dfd, type: 3}
+      propertyPath: m_TagString
+      value: casa2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

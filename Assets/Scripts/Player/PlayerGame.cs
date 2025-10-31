@@ -29,8 +29,9 @@ public class PlayerGame : MonoBehaviour
 	public GameObject btnAction;
 	public GameObject btnActionFinal;
 	public GameObject btnActionKey;
-	public GameObject panelText;
-	public TMP_Text textMessageHome;
+
+	public AudioSource home1;
+	public AudioSource home2;
 
 	private bool hasKey;
 
@@ -101,21 +102,18 @@ public class PlayerGame : MonoBehaviour
 
 		if (other.gameObject.tag == "casa1" && Input.GetKeyDown(KeyCode.E))
 		{
-			panelText.SetActive(true);
-			textMessageHome.text = "ESTAS HEBRIO. YA ES HORA DEL UNCHANCHU, TE VA A LLEVAR EL DIABLO";
+			home1.Play();
 		}
 
 		if (other.gameObject.tag == "casa2" && Input.GetKeyDown(KeyCode.E))
 		{
-			panelText.SetActive(true);
-			textMessageHome.text = "¡FUERA, COMPADRE! ES EL ALTIPLANO, A ESTA HORA CAMINA EL UNCHANCHU";
+			home2.Play();
 		}
 
 
 		if (other.gameObject.tag == "key" && Input.GetKeyDown(KeyCode.R))
 		{
-			panelText.SetActive(true);
-			textMessageHome.text = "¡Fuera, compadre! En el altiplano, a esta hora camina el Unchanchu.";
+			
 		}
 
 		if (other.gameObject.tag == "car" && Input.GetKeyDown(KeyCode.L))
@@ -129,7 +127,6 @@ public class PlayerGame : MonoBehaviour
 
   void OnTriggerExit(Collider other)
   {
-		panelText.SetActive(false);
     btnAction.SetActive(false);
     btnActionKey.SetActive(false);
     btnActionFinal.SetActive(false);

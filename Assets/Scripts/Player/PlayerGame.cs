@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using TMPro;
 
 public class PlayerGame : MonoBehaviour
 {
@@ -29,6 +29,8 @@ public class PlayerGame : MonoBehaviour
 	public GameObject btnAction;
 	public GameObject btnActionFinal;
 	public GameObject btnActionKey;
+	public GameObject panelText;
+	public TMP_Text textMessageHome;
 
 	private bool hasKey;
 
@@ -96,11 +98,38 @@ public class PlayerGame : MonoBehaviour
 			btnActionKey.SetActive(true);
 
 		btnAction.SetActive(true);
+
+		if (other.gameObject.tag == "casa1" && Input.GetKeyDown(KeyCode.E))
+		{
+			panelText.SetActive(true);
+			textMessageHome.text = "ESTAS HEBRIO. YA ES HORA DEL UNCHANCHU, TE VA A LLEVAR EL DIABLO";
+		}
+
+		if (other.gameObject.tag == "casa2" && Input.GetKeyDown(KeyCode.E))
+		{
+			panelText.SetActive(true);
+			textMessageHome.text = "¡FUERA, COMPADRE! ES EL ALTIPLANO, A ESTA HORA CAMINA EL UNCHANCHU";
+		}
+
+
+		if (other.gameObject.tag == "key" && Input.GetKeyDown(KeyCode.R))
+		{
+			panelText.SetActive(true);
+			textMessageHome.text = "¡Fuera, compadre! En el altiplano, a esta hora camina el Unchanchu.";
+		}
+
+		if (other.gameObject.tag == "car" && Input.GetKeyDown(KeyCode.L))
+		{
+
+		}
+		
+
 	}
 
 
   void OnTriggerExit(Collider other)
   {
+		panelText.SetActive(false);
     btnAction.SetActive(false);
     btnActionKey.SetActive(false);
     btnActionFinal.SetActive(false);
